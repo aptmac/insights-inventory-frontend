@@ -15,6 +15,7 @@ import { InfrastructureCard } from '../InfrastructureCard';
 import { ConfigurationCard } from '../ConfigurationCard';
 import { SystemStatusCard } from '../SystemStatusCard';
 import { DataCollectorsCard } from '../DataCollectorsCard/DataCollectorsCard';
+import { RuntimesProcessesCard } from '../RuntimesProcessesCard/RuntimesProcessesCard';
 import { Provider } from 'react-redux';
 import useInsightsNavigate from '@redhat-cloud-services/frontend-components-utilities/useInsightsNavigate/useInsightsNavigate';
 
@@ -96,6 +97,7 @@ class GeneralInformation extends Component {
       SystemStatusCardWrapper,
       DataCollectorsCardWrapper,
       CollectionCardWrapper,
+      RuntimesProcessesCardWrapper,
       children,
     } = this.props;
     const Wrapper = store ? Provider : Fragment;
@@ -178,6 +180,14 @@ class GeneralInformation extends Component {
                     />
                   </GridItem>
                 )}
+
+                {RuntimesProcessesCardWrapper && (
+                  <GridItem>
+                    <RuntimesProcessesCardWrapper
+                      handleClick={this.handleModalToggle}
+                    />
+                  </GridItem>
+                )}
               </Grid>
             </GridItem>
             {children}
@@ -241,6 +251,10 @@ GeneralInformation.propTypes = {
     PropTypes.elementType,
     PropTypes.bool,
   ]),
+  RuntimesProcessesCardWrapper: PropTypes.oneOfType([
+    PropTypes.elementType,
+    PropTypes.bool,
+  ]),
   children: PropTypes.node,
   navigate: PropTypes.any,
   inventoryId: PropTypes.string.isRequired,
@@ -257,6 +271,7 @@ GeneralInformation.defaultProps = {
   SystemStatusCardWrapper: SystemStatusCard,
   DataCollectorsCardWrapper: DataCollectorsCard,
   CollectionCardWrapper: false,
+  RuntimesProcessesCardWrapper: RuntimesProcessesCard,
   systemProfilePrefetched: false,
   showImageDetails: false,
 };
