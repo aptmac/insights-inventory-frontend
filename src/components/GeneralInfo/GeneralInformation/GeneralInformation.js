@@ -184,6 +184,17 @@ class GeneralInformation extends Component {
                     />
                   </GridItem>
                 )}
+
+                {this.props.showRuntimesProcesses && (
+                  <GridItem>
+                    <AsyncComponent
+                      appName="runtimes"
+                      module="./RuntimesProcessesCard"
+                      // eslint-disable-next-line react/prop-types
+                      hostname={this.props.entity.fqdn}
+                    />
+                  </GridItem>
+                )}
               </Grid>
             </GridItem>
             {children}
@@ -257,6 +268,7 @@ GeneralInformation.propTypes = {
   inventoryId: PropTypes.string.isRequired,
   systemProfilePrefetched: PropTypes.bool,
   showImageDetails: PropTypes.bool,
+  showRuntimesProcesses: PropTypes.bool,
 };
 GeneralInformation.defaultProps = {
   entity: {},
@@ -270,6 +282,7 @@ GeneralInformation.defaultProps = {
   CollectionCardWrapper: false,
   systemProfilePrefetched: false,
   showImageDetails: false,
+  showRuntimesProcesses: false,
 };
 
 const GeneralInformationComponent = (props) => {
