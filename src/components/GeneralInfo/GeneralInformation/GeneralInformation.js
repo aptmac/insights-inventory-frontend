@@ -190,8 +190,7 @@ class GeneralInformation extends Component {
                     <AsyncComponent
                       appName="runtimes"
                       module="./RuntimesProcessesCard"
-                      // eslint-disable-next-line react/prop-types
-                      hostname={this.props.entity.fqdn}
+                      hostname={entity.fqdn}
                     />
                   </GridItem>
                 )}
@@ -229,6 +228,7 @@ GeneralInformation.propTypes = {
         name: PropTypes.string,
       }),
     }),
+    fqdn: PropTypes.string,
   }),
   openedModal: PropTypes.string,
   loadSystemDetail: PropTypes.func,
